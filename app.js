@@ -45,14 +45,11 @@ inquirer.prompt([
     // store manager object in an array of people
     people.push(manager);
     //run function to prompt for more employees
-    
+
     moreEmployees()
 })
-
 function moreEmployees() {
-    console.log("functionRun")
-    promptQuestion
-
+    // console.log("functionRun")
     inquirer.prompt([
         {
             type: "list",
@@ -62,7 +59,8 @@ function moreEmployees() {
 
         }
     ]).then(employeeAnswers => {
-        if (employeeAnswers.employeeType == "intern") {
+        console.log(employeeAnswers.employeeType)
+        if (employeeAnswers.employeeType == "Intern") {
             
             inquirer.prompt([
                 
@@ -83,12 +81,20 @@ function moreEmployees() {
                     },
                     {
                         type: "input",
-                        message: "What school do you attend?",
+                        message: "What school are you in?",
                         name: "school"
                     }
                 
-            ])
-        } else if (employeeAnswers.employeeType == "engineer") {
+            ]).then(internAnswers =>{
+                var intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
+                people.push(intern);
+
+                moreEmployees()
+            })
+
+
+
+        } else if (employeeAnswers.employeeType == "Engineer") {
             inquirer.prompt([
                 {
                     type: "input",
@@ -107,20 +113,31 @@ function moreEmployees() {
                 },
                 {
                     type: "input",
-                    message: "What is your link to your gitHub profile?",
+                    message: "What is the link to your gitHub profile?",
                     name: "gitHub"
                 }
-            ])
+
+            ]).then(engineerAnswers =>{
+                var engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.school)
+                people.push(engineer)
+
+                moreEmployees()
+            })
         } else {
-            return;
+        
+        const html = render(people) 
+        // console.log(html);
+        // write html to file
         }
+       
     })
+
 }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
-let manager1 = new Manger(response.name, response, id, respose.email, reponse.officeNumber);
+// let manager1 = new Manger(response.name, response, id, respose.email, reponse.officeNumber);
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
