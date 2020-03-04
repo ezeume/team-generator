@@ -61,31 +61,31 @@ function moreEmployees() {
     ]).then(employeeAnswers => {
         console.log(employeeAnswers.employeeType)
         if (employeeAnswers.employeeType == "Intern") {
-            
+
             inquirer.prompt([
-                
-                    {
-                        type: "input",
-                        message: "What is your name?",
-                        name: "name"
-                    },
-                    {
-                        type: "input",
-                        message: "What is your Id?",
-                        name: "id"
-                    },
-                    {
-                        type: "input",
-                        message: "What is your email?",
-                        name: "email"
-                    },
-                    {
-                        type: "input",
-                        message: "What school are you in?",
-                        name: "school"
-                    }
-                
-            ]).then(internAnswers =>{
+
+                {
+                    type: "input",
+                    message: "What is your name?",
+                    name: "name"
+                },
+                {
+                    type: "input",
+                    message: "What is your Id?",
+                    name: "id"
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email"
+                },
+                {
+                    type: "input",
+                    message: "What school are you in?",
+                    name: "school"
+                }
+
+            ]).then(internAnswers => {
                 var intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
                 people.push(intern);
 
@@ -117,19 +117,20 @@ function moreEmployees() {
                     name: "gitHub"
                 }
 
-            ]).then(engineerAnswers =>{
+            ]).then(engineerAnswers => {
                 var engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.school)
                 people.push(engineer)
 
                 moreEmployees()
             })
         } else {
-        
-        const html = render(people) 
-        // console.log(html);
-        // write html to file
+
+            const html = render(people)
+            //console.log(html);
+            // write html to file
+            fs.writeFile()
         }
-       
+
     })
 
 }
