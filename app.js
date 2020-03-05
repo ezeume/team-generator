@@ -128,7 +128,16 @@ function moreEmployees() {
             const html = render(people)
             //console.log(html);
             // write html to file
-            fs.writeFile()
+            fs.writeFile("./output/team.html", html, function (err) {
+
+                if (err) {
+                    return console.log(err);
+                }
+
+                console.log("Success!");
+
+            });
+
         }
 
     })
