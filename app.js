@@ -128,7 +128,7 @@ function moreEmployees() {
             const html = render(people)
             //console.log(html);
             // write html to file
-            fs.writeFile("./output/team.html", html, function (err) {
+            fs.writeFile(outputPath, html, function (err) {
 
                 if (err) {
                     return console.log(err);
