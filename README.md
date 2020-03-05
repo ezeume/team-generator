@@ -4,3 +4,5 @@ This is a software engineering team generator CLI app that takes in information 
 
 
 Github Link: "https://ezeume.github.io/team-generator/"
+
+Youtube Link: "https://youtu.be/AFBQUwSQM1o"
